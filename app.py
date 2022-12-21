@@ -6,6 +6,10 @@ import stock as stock
 app = Flask(__name__)
 api = Api(app)
 
+@app.route('/')
+def home():
+  return "e-fin API"
+  
 @app.route('/health', methods=['GET'])
 def get():
   return {"status": "ok"}
@@ -15,4 +19,5 @@ def get_stock(ticker):
   return stock.getStock(ticker)
 
 if __name__ == '__main__':
+  app.debug = True
   app.run()
